@@ -17,25 +17,25 @@ const PHOTOS: CollagePhoto[] = [
   {
     src: "/story-2.webp",
     alt: "Foto 2",
-    className: "right-2 md:top-[35vh] top-[60vh] w-[550px] max-w-[50vw]",
+    className: "right-2 lg:top-[35vh] md:top-[80vh] top-[60vh] w-[550px] max-w-[50vw]",
     aspect: "aspect-[4/3]",
   },
   {
     src: "/story-3.webp",
     alt: "Foto 3",
-    className: "left-[8%] md:left-[15%] top-[85vh] md:top-[100vh] w-[500px] max-w-[60vw]",
+    className: "left-[8%] lg:left-[15%] top-[85vh] md:top-[120vh] lg:top-[110vh] w-[500px] max-w-[60vw]",
     aspect: "aspect-[1/1]",
   },
   {
     src: "/story-4.webp",
     alt: "Foto 4",
-    className: "right-[5%] top-[120vh] w-[500px] max-w-[40vw]",
+    className: "right-[5%] top-[120vh] md:top-[170vh] lg:top-[120vh] w-[500px] max-w-[40vw]",
     aspect: "aspect-[8/12]",
   },
   {
     src: "/story-5.webp",
     alt: "Foto 5",
-    className: "left-1/2 md:top-[200vh] top-[160vh] w-[700px] max-w-[80vw] -translate-x-1/2",
+    className: "left-1/2 lg:top-[210vh] md:top-[215vh] top-[160vh] w-[700px] max-w-[80vw] -translate-x-1/2",
     aspect: "aspect-[4/3]",
   },
 ];
@@ -43,7 +43,7 @@ const PHOTOS: CollagePhoto[] = [
 export default function StoryCollage() {
   return (
     <section className="relative">
-      <div className="relative md:min-h-[290vh] min-h-[220vh]">
+      <div className="relative lg:min-h-[310vh] md:min-h-[310vh] min-h-[220vh]">
         <div className="pointer-events-none sticky top-1/2 z-20 flex justify-center">
           <div className="w-full max-w-5xl px-6 text-center">
             <p className="md:text-xl text-base tracking-widest opacity-70">DANNA & FABIAN</p>
