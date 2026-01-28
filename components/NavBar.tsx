@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
 type NavItem = {
@@ -46,7 +47,7 @@ function NavBar() {
 
   const items: NavItem[] = useMemo(
     () => [
-      { label: "Nuestra Historia", href: "#story" },
+      { label: "Nuestra Historia", href: "/story" },
       { label: "Viaje y Alojamiento", href: "#travel" },
       { label: "Preguntas Frecuentes", href: "#faqs" },
     ],
@@ -60,7 +61,6 @@ function NavBar() {
       trailing: "›",
       items: [
         { label: "Evento", href: "#evento" },
-        { label: "Regalos", href: "#regalos" },
         { label: "Menú", href: "#menu" },
       ],
     }),
@@ -86,8 +86,10 @@ function NavBar() {
 
   return (
     <>
-      <header className="max-w-screen absolute top-0 left-0 right-0 z-50">
-        <Image src="/monogram.svg" alt="Danna & Fabian" width={80} height={80} className="absolute top-2 left-1/2 -translate-x-1/2"/>
+      <header className="max-w-screen absolute top-0 left-0 right-0 z-50"> 
+       <Link href="/">  
+          <Image src="/monogram.svg" alt="Danna & Fabian" width={80} height={80} className="absolute top-2 left-1/2 -translate-x-1/2"/>
+        </Link>
         <div className="flex items-center justify-between px-6 py-6 md:px-12 md:py-10">
           {/* Desktop */}
           <nav className="hidden lg:flex items-center gap-4 text-sm tracking-wider group/nav">
