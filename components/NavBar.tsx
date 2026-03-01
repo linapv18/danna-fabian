@@ -49,7 +49,7 @@ function NavBar() {
     () => [
       { label: "Nuestra Historia", href: "/nuestra-historia" },
       { label: "Viaje y Alojamiento", href: "/viaje-alojamiento" },
-      { label: "Preguntas Frecuentes", href: "#faqs" },
+      { label: "Preguntas Frecuentes", href: "/faqs" },
     ],
     []
   );
