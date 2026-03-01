@@ -17,7 +17,7 @@ function Hero() {
           </div>
         </div>
         <div className="md:text-xl text-base mb-16 text-center tracking-widest font-light">
-          <div>16.07.2026</div>
+          <div>12.12.2026</div>
           <div>Barraquilla, Colombia</div>
         </div>
       </div>

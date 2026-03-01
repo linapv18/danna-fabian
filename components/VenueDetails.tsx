@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 
 const VenueDetails = () => {
@@ -34,7 +35,7 @@ const VenueDetails = () => {
             </a>
           </div>
         </div>
-        <button>Viaje y Alojamiento</button>
+        <button onClick={()=> window.open("/viaje-alojamiento")}>Viaje y Alojamiento</button>
       </div>
       <div className="relative bg-dark flex flex-col justify-center items-center min-h-[70vh] w-full">
         <h2 className="lg:text-7xl text-4xl font-extralight tracking-widest z-40 relative text-center text-light">

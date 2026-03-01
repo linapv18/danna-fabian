@@ -54,19 +54,6 @@ function NavBar() {
     []
   );
 
-  const infoGroup: NavGroup = useMemo(
-    () => ({
-      label: "Información",
-      href: "#info",
-      trailing: "›",
-      items: [
-        { label: "Evento", href: "#evento" },
-        { label: "Menú", href: "#menu" },
-      ],
-    }),
-    []
-  );
-
   useEffect(() => {
     if (!isOpen) return;
 
@@ -102,32 +89,6 @@ function NavBar() {
                 {item.label}
               </a>
             ))}
-
-            {/* Información dropdown */}
-            <div className="relative group">
-              <a
-                href={infoGroup.href}
-                className="uppercase opacity-90 group-hover/nav:opacity-50 hover:opacity-100 focus-visible:opacity-100 transition-opacity inline-flex items-center"
-              >
-                <span>{infoGroup.label}</span>
-              </a>
-              <div className="pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto transition absolute left-0 top-full pt-3">
-                <div className="min-w-56 ">
-                  <ul className="py-2">
-                    {infoGroup.items.map((sub) => (
-                      <li key={sub.label}>
-                        <a
-                          href={sub.href}
-                          className="block px-4 py-3 uppercase tracking-wider text-xs hover:bg-dark/5"
-                        >
-                          {sub.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
           </nav>
 
           <div className="hidden lg:block">
@@ -178,33 +139,6 @@ function NavBar() {
                   </li>
                 ))}
 
-                <li className="py-8">
-                  <button
-                    type="button"
-                    className="bg-transparent! text-dark! p-0! font-normal! w-full justify-center uppercase tracking-[0.25em] hover:opacity-90"
-                    aria-expanded={infoOpen}
-                    onClick={() => setInfoOpen((v) => !v)}
-                  >
-                    <span className="block uppercase tracking-[0.25em] hover:opacity-90">{infoGroup.label}</span>
-                    <span className="ml-3 opacity-70">{infoGroup.trailing}</span>
-                  </button>
-
-                  {infoOpen && (
-                    <ul className="mt-6 space-y-5">
-                      {infoGroup.items.map((sub) => (
-                        <li key={sub.label}>
-                          <a
-                            href={sub.href}
-                            className="block uppercase tracking-[0.25em] opacity-80 hover:opacity-100"
-                            onClick={closeMenu}
-                          >
-                            {sub.label}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
               </ul>
             </div>
 

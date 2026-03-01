@@ -1,3 +1,5 @@
+"use client";
+
 const StoryPreview = () => {
   return (
     <div className="text-center lg:py-80 py-20 flex flex-col items-center gap-12 border-stone-300 border-y">
@@ -7,7 +9,7 @@ const StoryPreview = () => {
         importantes. Esta es una historia hecha de recuerdos, caminos
         compartidos y capítulos que siguen escribiéndose.
       </p>
-      <button className="my-7">Lee nuestra historia</button>
+      <button className="my-7" onClick={()=> window.open("/nuestra-historia")}>Lee nuestra historia</button>
     </div>
   );
 };

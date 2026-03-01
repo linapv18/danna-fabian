@@ -1,3 +1,5 @@
+"use client";
+
 const QuickLinks = () => {
   return (
     <div className="border-y border-stone-300 grid lg:grid-cols-2 align-baseline grid-cols-1">
@@ -6,18 +8,30 @@ const QuickLinks = () => {
           Preguntas Frecuentes
         </h2>
         <p className="tracking-wide font-extralight md:max-w-md max-w-xs pb-12">
-          Visita nuestra sección de preguntas frecuentes para encontrar
-          toda la información que necesitas.
+          Visita nuestra sección de preguntas frecuentes para encontrar toda la
+          información que necesitas.
         </p>
-        <button className="absolute left-1/2 -translate-x-1/2 bottom-10 text-sm! md:bottom-14">Preguntas Frecuentes</button>
+        <button
+          className="absolute left-1/2 -translate-x-1/2 bottom-10 text-sm! md:bottom-14"
+          onClick={() => window.open("/nuestra-historia")}
+        >
+          Preguntas Frecuentes
+        </button>
       </div>
       <div className="flex flex-col items-center gap-12 text-center md:py-32 py-24 relative">
-        <h2 className="md:text-4xl text-2xl tracking-widest uppercase">CONTÁCTANOS</h2>
+        <h2 className="md:text-4xl text-2xl tracking-widest uppercase">
+          CONTÁCTANOS
+        </h2>
         <p className="tracking-wide font-extralight md:max-w-md max-w-xs pb-12">
           Si tienen alguna pregunta o necesitan más información, no duden en
           ponerse en contacto con nosotros.
         </p>
-        <button className="absolute left-1/2 -translate-x-1/2 bottom-10 text-sm! md:bottom-14">ESCRÍBENOS</button>
+        <button
+          className="absolute left-1/2 -translate-x-1/2 bottom-10 text-sm! md:bottom-14"
+          onClick={() => window.open("http://wa.link/eae769", "blank")}
+        >
+          ESCRÍBENOS
+        </button>
       </div>
     </div>
   );
