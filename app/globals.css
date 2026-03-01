@@ -4,12 +4,16 @@
   --background: hsla(52,27.27%,89.22%,1);
   --dark: #23201A;
   --light: #EBE9DC;
+  --accent: hsla(43.2,25.25%,19.41%,1);
+  --light-accent: #716341;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-dark: var(--dark);
   --color-light: var(--light);
+  --color-accent: var(--accent);
+  --color-lightaccent: var(--light-accent);
 }
 
 body {

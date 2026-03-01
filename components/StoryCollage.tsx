@@ -12,7 +12,7 @@ const PHOTOS: CollagePhoto[] = [
     src: "/story-1.webp",
     alt: "Foto 1",
     className: "left-0 top-[14vh] w-[500px] max-w-[50vw]",
-    aspect: "aspect-[10/16]",
+    aspect: "aspect-[12/16]",
   },
   {
     src: "/story-2.webp",
@@ -23,7 +23,7 @@ const PHOTOS: CollagePhoto[] = [
   {
     src: "/story-3.webp",
     alt: "Foto 3",
-    className: "left-[8%] lg:left-[15%] top-[85vh] md:top-[120vh] lg:top-[110vh] w-[500px] max-w-[60vw]",
+    className: "left-[8%] lg:left-[15%] top-[85vh] md:top-[120vh] lg:top-[110vh] w-[500px] max-w-[50vw]",
     aspect: "aspect-[1/1]",
   },
   {

@@ -47,8 +47,8 @@ function NavBar() {
 
   const items: NavItem[] = useMemo(
     () => [
-      { label: "Nuestra Historia", href: "/story" },
-      { label: "Viaje y Alojamiento", href: "#travel" },
+      { label: "Nuestra Historia", href: "/nuestra-historia" },
+      { label: "Viaje y Alojamiento", href: "/viaje-alojamiento" },
       { label: "Preguntas Frecuentes", href: "#faqs" },
     ],
     []
@@ -138,7 +138,7 @@ function NavBar() {
           <button
             type="button"
             aria-label="Open menu"
-            className="lg:hidden! bg-transparent! text-dark! fixed right-3 top-3"
+            className="lg:hidden! bg-transparent! text-dark! absolute right-3 top-3"
             onClick={() => {
               setInfoOpen(false);
               setIsOpen(true);
