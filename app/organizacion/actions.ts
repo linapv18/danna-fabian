@@ -13,7 +13,7 @@ export async function login(form: FormData) {
 }
 export async function logout() { await clearReportSession(); redirect("/organizacion"); }
 
-export async function saveInvitation(input: { id?: string; name: string; seats: number; requestId: string; response?: { attending: boolean; partySize: number } }) {
+export async function saveInvitation(input: { id?: string; name: string; seats: number; requestId: string; response?: { attending: boolean; partySize: number } | null }) {
   if (!(await reportAuthorized())) return { error: "Tu sesión venció. Vuelve a iniciar sesión." };
   const name = typeof input.name === "string" ? input.name.trim() : "";
   if (!name || name.length > 200) return { error: "Escribe un nombre de hasta 200 caracteres." };
@@ -24,7 +24,18 @@ export async function saveInvitation(input: { id?: string; name: string; seats: 
   if (response && (typeof response.attending !== "boolean" || !Number.isInteger(response.partySize) || (response.attending ? response.partySize < 1 || response.partySize > input.seats : response.partySize !== 0))) return { error: "La cantidad confirmada debe estar entre 1 y los cupos asignados." };
   try {
     const sql = neon(process.env.DATABASE_URL!);
-    if (input.id && response) {
+    if (input.id && response === null) {
+      // A missing response is the existing representation of a pending invitation.
+      // Update the invitation and clear its response atomically.
+      const updated = await sql`WITH edited AS (
+        UPDATE invitations SET display_name=${name}, seats=${input.seats}
+        WHERE id=${input.id} AND active=true RETURNING id
+      ), cleared AS (
+        DELETE FROM invitation_responses WHERE invitation_id IN (SELECT id FROM edited)
+        RETURNING invitation_id
+      ) SELECT id FROM edited`;
+      if (!updated.length) return { error: "La invitación ya no está disponible." };
+    } else if (input.id && response) {
       const updated = await sql`WITH edited AS (
         UPDATE invitations SET display_name=${name}, seats=${input.seats}
         WHERE id=${input.id} AND active=true RETURNING id
