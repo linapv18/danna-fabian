@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/InvitationLink";
 import ArrowIcon from "@/components/ArrowIcon";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";

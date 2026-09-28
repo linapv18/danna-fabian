@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/InvitationLink";
 import ArrowIcon from "@/components/ArrowIcon";
 
 import { useEffect, useRef } from "react";
 
-const RSVPBanner = () => {
+const RSVPBanner = ({ invitation }: { invitation?: { name: string; seats: number } | null }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
 
@@ -68,7 +68,9 @@ const RSVPBanner = () => {
 
       <div className="relative z-10 flex w-full flex-col gap-8 md:gap-12 px-6 py-20 md:py-28 items-center justify-center text-center text-white">
         <div className="w-full">
+          {invitation && <p className="display text-2xl md:text-4xl mb-6">{invitation.name}</p>}
           <h2 className="text-7xl md:text-9xl tracking-tight">RSVP</h2>
+          {invitation && <p className="mt-5 text-sm">{invitation.seats} {invitation.seats === 1 ? "cupo reservado" : "cupos reservados"}</p>}
           <p className="mx-auto mt-4 max-w-xl opacity-90">
             Por favor, confírmanos si podrás acompañarnos en la celebración de
             nuestro gran día antes del 1 de enero de 2026.

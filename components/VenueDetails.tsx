@@ -1,6 +1,6 @@
 import ArrowIcon from "@/components/ArrowIcon";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/InvitationLink";
 
 export default function VenueDetails() {
   return (

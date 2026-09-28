@@ -8,10 +8,10 @@ Proyecto `danna-fabian` (`dark-rain-34458457`), rama `production`, base `neondb`
 
 ## Invitaciones
 
-- `invitations` guarda nombre, cupos, clave de origen y SHA-256 del token. Cada enlace `/invitacion/<token>` usa 32 bytes aleatorios. Los tokens originales solo están en el archivo privado de enlaces y el manifiesto local, fuera del repositorio.
+- `invitations` guarda nombre, cupos, clave de origen y SHA-256 del token. Cada enlace `/?token=<token>` usa 32 bytes aleatorios. Los tokens originales solo están en el archivo privado de enlaces y el manifiesto local, fuera del repositorio.
 - `invitation_responses` tiene una única respuesta por invitación. Reenviar actualiza la misma fila; nombre y cupos se consultan en el servidor. No se acepta identidad ni cupos aportados por el navegador.
 - `rsvp_responses` conserva las respuestas del formulario anterior. No se asignan a familias por similitud de nombres.
-- `/rsvp` sin enlace personal muestra instrucciones; el endpoint requiere un token válido y activo.
+- `/rsvp?token=<token>` carga la invitación y su respuesta. `/rsvp` sin enlace personal muestra instrucciones; el endpoint requiere un token válido y activo.
 - Las páginas personales son dinámicas, no indexables y no envían el token en el referrer. No hay un listado público de invitados.
 - Quien tenga el enlace puede ver y modificar esa invitación. Compartir únicamente con su destinatario. Para revocar un enlace, poner `active=false` en Neon.
 

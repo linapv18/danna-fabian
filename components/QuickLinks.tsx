@@ -1,5 +1,5 @@
 import ArrowIcon from "@/components/ArrowIcon";
-import Link from "next/link";
+import Link from "@/components/InvitationLink";
 
 export default function QuickLinks() {
   return (

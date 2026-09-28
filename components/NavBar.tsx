@@ -3,7 +3,7 @@
 import ArrowIcon from "@/components/ArrowIcon";
 
 
-import Link from "next/link";
+import Link from "@/components/InvitationLink";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
