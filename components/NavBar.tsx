@@ -27,7 +27,7 @@ export default function NavBar() {
   return (
     <>
       <header className="nav-shell">
-        <Link href="/" className="display nav-brand" aria-label="Danna y Fabián, inicio">D<span className="text-lightaccent italic">&amp;</span>F</Link>
+        <Link href="/" className="display nav-brand" aria-label="Fabián y Danna , inicio">D<span className="text-lightaccent italic">&amp;</span>F</Link>
         <nav aria-label="Navegación principal" className="nav-links">{items.map(item => <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>)}</nav>
         <Link href="/rsvp" className="button nav-rsvp">Confirmar asistencia <ArrowIcon /></Link>
         <button className="mobile-toggle" aria-expanded={isOpen} aria-controls="mobile-menu" onClick={() => setIsOpen(true)}>Menú <span aria-hidden="true">☰</span></button>

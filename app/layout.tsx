@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+// @ts-expect-error Next.js handles global CSS imports; TypeScript may not resolve this side-effect import.
 import "./globals.css";
 
 
@@ -9,8 +10,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Danna & Fabian",
-  description: "Celebra con Danna y Fabián el 12 de diciembre de 2026 en Barranquilla. Nuestra historia y todos los detalles de la boda.",
+  title: "Fabián y Danna ",
+  description: "Celebra con Fabián y Danna  el 12 de diciembre de 2026 en Barranquilla. Nuestra historia y todos los detalles de la boda.",
 };
 
 export default function RootLayout({

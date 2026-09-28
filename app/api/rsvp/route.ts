@@ -1,43 +1,38 @@
 import { neon } from "@neondatabase/serverless";
 import { NextResponse } from "next/server";
 import { parseRsvp } from "@/lib/rsvp";
+import { getInvitation, hashToken, isInvitationToken } from "@/lib/invitations";
+
+const reply = (data: object, status = 200) => NextResponse.json(data, { status, headers: { "Cache-Control": "no-store" } });
 
 export async function POST(request: Request) {
-  const origin = request.headers.get("origin");
   try {
-    if (origin && new URL(origin).host !== request.headers.get("host")) {
-      return NextResponse.json({ error: "Solicitud no permitida." }, { status: 403 });
-    }
-  } catch {
-    return NextResponse.json({ error: "Solicitud no permitida." }, { status: 403 });
-  }
-  if (!request.headers.get("content-type")?.includes("application/json")) {
-    return NextResponse.json({ error: "Formato no válido." }, { status: 415 });
-  }
-  let input;
+    const origin = request.headers.get("origin");
+    if (origin && new URL(origin).host !== request.headers.get("host")) return reply({ error: "Solicitud no permitida." }, 403);
+  } catch { return reply({ error: "Solicitud no permitida." }, 403); }
+  if (!request.headers.get("content-type")?.includes("application/json")) return reply({ error: "Formato no válido." }, 415);
+  let raw;
   try {
     const body = await request.text();
-    if (body.length > 16000) return NextResponse.json({ error: "La respuesta es demasiado larga." }, { status: 413 });
-    const raw = JSON.parse(body);
-    if (raw?.website) return NextResponse.json({ error: "No se pudo enviar la respuesta." }, { status: 400 });
-    input = parseRsvp(raw);
-  } catch (error) {
-    return NextResponse.json({ error: error instanceof SyntaxError ? "Formato no válido." : error instanceof Error ? error.message : "Revisa los datos." }, { status: 400 });
-  }
-  if (!process.env.DATABASE_URL) {
-    return NextResponse.json({ error: "Las confirmaciones no están disponibles en este momento. Intenta más tarde." }, { status: 503 });
-  }
+    if (body.length > 16000) return reply({ error: "La respuesta es demasiado larga." }, 413);
+    raw = JSON.parse(body);
+  } catch { return reply({ error: "Formato no válido." }, 400); }
+  if (!raw || raw.website || !isInvitationToken(raw.token)) return reply({ error: "Abre el enlace personal de tu invitación para confirmar." }, 403);
   try {
-    const sql = neon(process.env.DATABASE_URL);
-    // Reusing the submission ID makes retries safe without exposing previous replies.
-    await sql`INSERT INTO rsvp_responses
-      (id, full_name, email, attending, companions, party_size, dietary_requirements, message)
-      VALUES (${input.submissionId}, ${input.name}, ${input.email}, ${input.attending},
-        ${JSON.stringify(input.companions)}::jsonb, ${input.attending ? input.companions.length + 1 : 0},
-        ${input.dietary}, ${input.message})
-      ON CONFLICT (id) DO NOTHING`;
-    return NextResponse.json({ success: true }, { headers: { "Cache-Control": "no-store" } });
-  } catch {
-    return NextResponse.json({ error: "No pudimos guardar tu respuesta. Por favor intenta nuevamente." }, { status: 503 });
-  }
+    const invitation = await getInvitation(raw.token);
+    if (!invitation) return reply({ error: "Esta invitación no está disponible. Revisa tu enlace personal." }, 403);
+    let input;
+    try { input = parseRsvp(raw, invitation.seats); }
+    catch (e) { return reply({ error: e instanceof Error ? e.message : "Revisa tus datos." }, 400); }
+    const sql = neon(process.env.DATABASE_URL!);
+    // Validate the current allocation again inside the write, ignoring all client identity fields.
+    const rows = await sql`INSERT INTO invitation_responses (invitation_id, attending, party_size, dietary_requirements, message)
+      SELECT id, ${input.attending}, ${input.partySize}, ${input.dietary}, ${input.message}
+      FROM invitations WHERE token_hash=${hashToken(raw.token)} AND active=true AND seats >= ${input.partySize}
+      ON CONFLICT (invitation_id) DO UPDATE SET attending=EXCLUDED.attending,
+      party_size=EXCLUDED.party_size, dietary_requirements=EXCLUDED.dietary_requirements,
+      message=EXCLUDED.message, updated_at=now() RETURNING invitation_id`;
+    if (!rows.length) return reply({ error: "La invitación cambió. Recarga la página para confirmar tus cupos." }, 409);
+    return reply({ success: true });
+  } catch { return reply({ error: "No pudimos guardar tu respuesta. Intenta nuevamente en unos minutos." }, 503); }
 }

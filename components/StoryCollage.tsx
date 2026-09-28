@@ -46,7 +46,7 @@ export default function StoryCollage() {
       <div className="relative lg:min-h-[310vh] md:min-h-[310vh] min-h-[220vh]">
         <div className="pointer-events-none sticky top-1/2 z-20 flex justify-center">
           <div className="w-full max-w-5xl px-6 text-center">
-            <p className="md:text-xl text-base tracking-widest opacity-70">DANNA & FABIAN</p>
+            <p className="md:text-xl text-base tracking-widest opacity-70">Fabián y Danna </p>
             <h2 className="mt-6 text-5xl md:text-8xl font-light tracking-tight">Nuestra historia</h2>
           </div>
         </div>
