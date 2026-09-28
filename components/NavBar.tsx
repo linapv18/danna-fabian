@@ -27,13 +27,13 @@ export default function NavBar() {
   return (
     <>
       <header className="nav-shell">
-        <Link href="/" className="display nav-brand" aria-label="Fabián y Danna , inicio">D<span className="text-lightaccent italic">&amp;</span>F</Link>
+        <Link href="/" className="display nav-brand" aria-label="Fabián y Danna , inicio">F<span className="text-lightaccent italic">&amp;</span>D</Link>
         <nav aria-label="Navegación principal" className="nav-links">{items.map(item => <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>)}</nav>
         <Link href="/rsvp" className="button nav-rsvp">Confirmar asistencia <ArrowIcon /></Link>
         <button className="mobile-toggle" aria-expanded={isOpen} aria-controls="mobile-menu" onClick={() => setIsOpen(true)}>Menú <span aria-hidden="true">☰</span></button>
       </header>
       {isOpen && <dialog ref={dialog} id="mobile-menu" aria-label="Menú de navegación" onCancel={() => setIsOpen(false)} className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none bg-background text-dark p-7 backdrop:bg-dark/30">
-        <div className="flex justify-between items-center"><span className="display text-3xl">D &amp; F</span><button autoFocus onClick={() => setIsOpen(false)} aria-label="Cerrar menú">Cerrar ×</button></div>
+        <div className="flex justify-between items-center"><span className="display text-3xl">F &amp; D</span><button autoFocus onClick={() => setIsOpen(false)} aria-label="Cerrar menú">Cerrar ×</button></div>
         <nav className="flex h-4/5 flex-col justify-center gap-10" aria-label="Navegación móvil">{items.map(item => <Link className="display text-4xl" key={item.href} href={item.href} onClick={() => setIsOpen(false)}>{item.label}</Link>)}<Link className="text-link self-start" href="/rsvp" onClick={() => setIsOpen(false)}>Confirmar asistencia <ArrowIcon /></Link></nav>
       </dialog>}
     </>

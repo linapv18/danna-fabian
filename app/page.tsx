@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { referrer: "no-referrer", robots: { index: false, follow: false } };
 import InvitationCover from "@/components/InvitationCover";
+import Gifts from "@/components/Gifts";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
@@ -28,6 +29,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ t
       <VenueDetails />
       <Quote />
       <QuickLinks />
+      <Gifts />
       <RSVPBanner invitation={invitation} />
       <Footer />
     </div>

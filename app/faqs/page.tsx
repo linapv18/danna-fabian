@@ -1,3 +1,4 @@
+import ArrowIcon from "@/components/ArrowIcon";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import type { Metadata } from "next";
@@ -24,6 +25,10 @@ export default function FaqsPage() {
                 pueden optar por vestidos largos de estilo formal y elegante,
                 mientras que los caballeros deberán vestir esmoquin negro (Black Tie)
               </span>
+              <div className="mt-6 flex flex-wrap gap-x-8 gap-y-5">
+                <a href="https://pin.it/b01Tpfb3R" className="text-link" target="_blank" rel="noopener noreferrer">Moodboard para hombres <ArrowIcon /></a>
+                <a href="https://pin.it/2XlnEpoCQ" className="text-link" target="_blank" rel="noopener noreferrer">Moodboard para mujeres <ArrowIcon /></a>
+              </div>
             </li>
             <li className="font-light text-lg tracking-wider">
               ¿HAY COLORES RESERVADOS PARA EL VESTUARIO? <br />

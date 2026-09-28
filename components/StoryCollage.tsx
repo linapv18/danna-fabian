@@ -9,31 +9,31 @@ type CollagePhoto = {
 
 const PHOTOS: CollagePhoto[] = [
   {
-    src: "/story-1.webp",
+    src: "/story-1.JPG",
     alt: "Foto 1",
     className: "left-0 top-[14vh] w-[500px] max-w-[50vw]",
     aspect: "aspect-[12/16]",
   },
   {
-    src: "/story-2.webp",
+    src: "/story-2.JPG",
     alt: "Foto 2",
     className: "right-2 lg:top-[35vh] md:top-[80vh] top-[60vh] w-[550px] max-w-[50vw]",
     aspect: "aspect-[4/3]",
   },
   {
-    src: "/story-3.webp",
+    src: "/story-3.JPG",
     alt: "Foto 3",
     className: "left-[8%] lg:left-[15%] top-[85vh] md:top-[120vh] lg:top-[110vh] w-[500px] max-w-[50vw]",
     aspect: "aspect-[1/1]",
   },
   {
-    src: "/story-4.webp",
+    src: "/story-4.JPG",
     alt: "Foto 4",
     className: "right-[5%] top-[120vh] md:top-[170vh] lg:top-[120vh] w-[500px] max-w-[40vw]",
     aspect: "aspect-[8/12]",
   },
   {
-    src: "/story-5.webp",
+    src: "/story-5.JPG",
     alt: "Foto 5",
     className: "left-1/2 lg:top-[210vh] md:top-[215vh] top-[160vh] w-[700px] max-w-[80vw] -translate-x-1/2",
     aspect: "aspect-[4/3]",

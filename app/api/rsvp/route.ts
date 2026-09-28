@@ -1,7 +1,7 @@
 import { neon } from "@neondatabase/serverless";
 import { NextResponse } from "next/server";
 import { parseRsvp } from "@/lib/rsvp";
-import { getInvitation, hashToken, isInvitationToken } from "@/lib/invitations";
+import { getInvitation, isInvitationToken } from "@/lib/invitations";
 
 const reply = (data: object, status = 200) => NextResponse.json(data, { status, headers: { "Cache-Control": "no-store" } });
 
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     // Validate the current allocation again inside the write, ignoring all client identity fields.
     const rows = await sql`INSERT INTO invitation_responses (invitation_id, attending, party_size, dietary_requirements, message)
       SELECT id, ${input.attending}, ${input.partySize}, ${input.dietary}, ${input.message}
-      FROM invitations WHERE token_hash=${hashToken(raw.token)} AND active=true AND seats >= ${input.partySize}
+      FROM invitations WHERE id=${invitation.id} AND active=true AND seats >= ${input.partySize}
       ON CONFLICT (invitation_id) DO UPDATE SET attending=EXCLUDED.attending,
       party_size=EXCLUDED.party_size, dietary_requirements=EXCLUDED.dietary_requirements,
       message=EXCLUDED.message, updated_at=now() RETURNING invitation_id`;

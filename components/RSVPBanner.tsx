@@ -73,7 +73,7 @@ const RSVPBanner = ({ invitation }: { invitation?: { name: string; seats: number
           {invitation && <p className="mt-5 text-sm">{invitation.seats} {invitation.seats === 1 ? "cupo reservado" : "cupos reservados"}</p>}
           <p className="mx-auto mt-4 max-w-xl opacity-90">
             Por favor, confírmanos si podrás acompañarnos en la celebración de
-            nuestro gran día antes del 1 de enero de 2026.
+            nuestro gran día antes del 12 de noviembre de 2026.
           </p>
         </div>
         <Link href="/rsvp" className="button max-w-full bg-light! text-dark!">Confirmar asistencia <ArrowIcon /></Link>

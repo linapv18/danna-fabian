@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="hero">
       <div className="hero-copy">
         <p className="eyebrow">Nos vamos a casar</p>
-        <h1 className="hero-title">Danna<br /><em>&amp;</em> Fabián</h1>
+        <h1 className="hero-title">Fabián<br /><em>&amp;</em> Danna</h1>
         <div className="flex items-center gap-5 mb-9">
           <span className="display text-5xl">12</span>
           <span className="h-10 w-px bg-dark/25" />
@@ -15,8 +15,8 @@ export default function Hero() {
         <a href="#celebracion" className="text-link">Nuestro gran día <ArrowIcon direction="down-right" /></a>
       </div>
       <div className="hero-photo">
-        <Image src="/hero-big.jpg" alt="Fabián y Danna  juntos" fill priority sizes="(max-width: 900px) 100vw, 52vw" />
-        <div className="hero-caption"><span className="eyebrow">El comienzo de siempre</span><span className="display text-4xl">D &amp; F</span></div>
+        <Image src="/hero-big.JPG" alt="Fabián y Danna  juntos" fill priority sizes="(max-width: 900px) 100vw, 52vw" />
+        <div className="hero-caption"><span className="eyebrow">El comienzo de siempre</span><span className="display text-4xl">F &amp; D</span></div>
       </div>
     </section>
   );

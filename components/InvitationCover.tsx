@@ -5,9 +5,9 @@ export default function InvitationCover({ invitation, token }: { invitation: Inv
   return (
     <main className="invitation-entry">
       <article className="invitation-card" aria-labelledby="invitation-title">
-        <div className="invitation-seal" aria-hidden="true">D<span>&amp;</span>F</div>
+        <div className="invitation-seal" aria-hidden="true">F<span>&amp;</span>D</div>
         <p className="eyebrow">Una fecha, una vida juntos</p>
-        <h1 id="invitation-title" className="invitation-couple">Danna <span>&amp;</span> Fabián</h1>
+        <h1 id="invitation-title" className="invitation-couple">Fabián <span>&amp;</span> Danna</h1>
         <p className="invitation-date">12 · DICIEMBRE · 2026</p>
         <div className="invitation-divider" aria-hidden="true">✧</div>
         <p className="eyebrow">Con mucho cariño, para</p>

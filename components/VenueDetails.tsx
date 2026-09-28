@@ -5,7 +5,7 @@ import Link from "@/components/InvitationLink";
 export default function VenueDetails() {
   return (
     <section className="section-shell venue-grid">
-      <div className="venue-photo"><Image src="/church.jpg" alt="Lugar de la ceremonia" fill sizes="(max-width: 600px) 100vw, 45vw" /></div>
+      <div className="venue-photo"><Image src="/church.jpeg" alt="Lugar de la ceremonia" fill sizes="(max-width: 600px) 100vw, 45vw" /></div>
       <div>
         <p className="eyebrow mb-6">03 / Nos encontramos aquí</p>
         <h2 className="section-title">Ubicación</h2>

@@ -133,3 +133,14 @@ button:hover, .button:hover { transform: translateY(-2px); opacity: 1; }
 .wedding-music button { gap: 8px; padding: 12px 16px; border: 1px solid #f5f2ea88; box-shadow: 0 4px 20px #0002; font-size: 9px; }
 .wedding-music svg { width: 18px; height: 18px; }
 .music-notice { max-width: 230px; padding: 12px; background: #f5f2ea; color: #293c35; border-radius: 8px; box-shadow: 0 4px 20px #0002; font-size: 12px; }
+
+.ceremony-details { margin-top: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.ceremony-time { font-size: clamp(60px, 9vw, 100px); line-height: 1; letter-spacing: -.04em; }
+.ceremony-time span { font-size: .42em; color: #c3cbaa; }
+.ceremony-note { font: italic clamp(22px, 3vw, 34px)/1.4 Georgia, serif; color: #c3cbaa; }
+.ceremony-countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 48px; padding-top: 30px; border-top: 1px solid #f5f2ea35; }
+.ceremony-countdown > div { text-align: center; padding: 8px 4px; }
+.ceremony-countdown > div + div { border-left: 1px solid #f5f2ea25; }
+.countdown-number { display: block; font: clamp(36px, 7vw, 78px)/1.2 Georgia, serif; font-variant-numeric: tabular-nums; }
+.countdown-label { display: block; margin-top: 12px; font-size: clamp(8px, 1.5vw, 10px); letter-spacing: .12em; text-transform: uppercase; color: #c3cbaa; }
+@media(max-width: 600px) { .ceremony-details { flex-direction: column; align-items: flex-start; } .ceremony-countdown { margin-top: 32px; } }
