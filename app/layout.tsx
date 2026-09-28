@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import PageMotion from "@/components/PageMotion";
 import WeddingMusic from "@/components/WeddingMusic";
 
 
@@ -24,7 +25,7 @@ export default function RootLayout({
       <body
         className={montserrat.variable}
       >
-        <WeddingMusic>{children}</WeddingMusic>
+        <WeddingMusic><PageMotion />{children}</WeddingMusic>
       </body>
     </html>
   );

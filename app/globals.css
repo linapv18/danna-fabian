@@ -144,3 +144,25 @@ button:hover, .button:hover { transform: translateY(-2px); opacity: 1; }
 .countdown-number { display: block; font: clamp(36px, 7vw, 78px)/1.2 Georgia, serif; font-variant-numeric: tabular-nums; }
 .countdown-label { display: block; margin-top: 12px; font-size: clamp(8px, 1.5vw, 10px); letter-spacing: .12em; text-transform: uppercase; color: #c3cbaa; }
 @media(max-width: 600px) { .ceremony-details { flex-direction: column; align-items: flex-start; } .ceremony-countdown { margin-top: 32px; } }
+
+/* Motion complements the existing RSVP parallax without altering its layers. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-photo img { animation: wedding-photo-settle 1.8s cubic-bezier(.22,1,.36,1) both; }
+  .invitation-card { animation: wedding-card-arrive 1s cubic-bezier(.22,1,.36,1) both; }
+  .invitation-divider::before, .invitation-divider::after { animation: wedding-line-grow 1.2s .3s both; }
+  .text-link svg, .invitation-open svg, .button svg { transition: translate .3s ease; }
+  .text-link:hover svg, .invitation-open:hover svg, .button:hover svg { translate: 4px 0; }
+  .quick-card { transition: background-color .4s ease; }
+  .quick-card:hover { background-color: #293c3506; }
+  .story-image img, .venue-photo img { transition: scale .8s cubic-bezier(.22,1,.36,1); }
+  .ceremony-countdown > div { transition: color .3s ease, translate .3s ease; }
+  .ceremony-countdown > div:hover { color: #c3cbaa; translate: 0 -4px; }
+  .nav-links a { transition: opacity .25s ease, translate .25s ease; }
+  .nav-links a:hover { translate: 0 -2px; }
+  @media (hover: hover) {
+    .story-image:hover img, .venue-photo:hover img { scale: 1.035; }
+  }
+}
+@keyframes wedding-photo-settle { from { scale: 1.045; opacity: .5; } to { scale: 1; opacity: 1; } }
+@keyframes wedding-card-arrive { from { opacity: 0; translate: 0 24px; } to { opacity: 1; translate: 0 0; } }
+@keyframes wedding-line-grow { from { scale: 0 1; } to { scale: 1 1; } }

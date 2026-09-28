@@ -15,7 +15,7 @@ export default function Hero() {
         <a href="#celebracion" className="text-link">Nuestro gran día <ArrowIcon direction="down-right" /></a>
       </div>
       <div className="hero-photo">
-        <Image src="/hero-big.jpg" alt="Fabián y Danna  juntos" fill priority sizes="(max-width: 900px) 100vw, 52vw" />
+        <Image src="/hero-couple-f8527a7.jpg" alt="Fabián y Danna  juntos" fill priority sizes="(max-width: 900px) 100vw, 52vw" />
         <div className="hero-caption"><span className="eyebrow">El comienzo de siempre</span><span className="display text-4xl">F &amp; D</span></div>
       </div>
     </section>
