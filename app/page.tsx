@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import QuickLinks from "@/components/QuickLinks";
@@ -18,8 +19,7 @@ export default function Home() {
       <Quote />
       <QuickLinks />
       <RSVPBanner />
-      <div className="bg-dark h-15">
-      </div>
+      <Footer />
     </div>
   );
 }

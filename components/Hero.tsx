@@ -1,36 +1,22 @@
 import Image from "next/image";
 
-function Hero() {
+export default function Hero() {
   return (
-    <div className="grid lg:grid-cols-2 grid-cols-1 lg:max-h-screen text-dark">
-      <div className=" uppercase flex flex-col justify-center items-center md:gap-60 gap-48 h-screen pt-80">
-        <div className="relative md:text-5xl text-4xl">
-          <Image
-            src="/hero-small.jpg"
-            alt="Danna & Fabian"
-            width={350}
-            height={300}
-            className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 grayscale opacity-80 w-3xs md:w-84"
-          />
-          <div className=" z-50 relative font-light tracking-widest">
-            Danna & Fabian
-          </div>
+    <section className="hero">
+      <div className="hero-copy">
+        <p className="eyebrow">Nos vamos a casar</p>
+        <h1 className="hero-title">Danna<br /><em>&amp;</em> Fabián</h1>
+        <div className="flex items-center gap-5 mb-9">
+          <span className="display text-5xl">12</span>
+          <span className="h-10 w-px bg-dark/25" />
+          <p className="eyebrow leading-6">Diciembre · 2026<br />Barranquilla, Colombia</p>
         </div>
-        <div className="md:text-xl text-base mb-16 text-center tracking-widest font-light">
-          <div>12.12.2026</div>
-          <div>Barraquilla, Colombia</div>
-        </div>
+        <a href="#celebracion" className="text-link">Nuestro gran día <span aria-hidden="true">↘</span></a>
       </div>
-      <div className="relative min-h-[60vh] max-h-screen">
-        <Image
-          src="/hero-big.jpg"
-          alt="Danna & Fabian"
-          fill
-          className="object-cover opacity-90"
-        />
+      <div className="hero-photo">
+        <Image src="/hero-big.jpg" alt="Danna y Fabián juntos" fill priority sizes="(max-width: 900px) 100vw, 52vw" />
+        <div className="hero-caption"><span className="eyebrow">El comienzo de siempre</span><span className="display text-4xl">D &amp; F</span></div>
       </div>
-    </div>
+    </section>
   );
 }
-
-export default Hero;

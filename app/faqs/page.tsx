@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import type { Metadata } from "next";
 
@@ -9,61 +10,56 @@ export default function FaqsPage() {
   return (
     <div>
       <NavBar />
-      <div className="my-40 md:px-24 px-6">
+      <main className="faq-content">
+        <div className="faq-heading"><p className="eyebrow mb-5">Los detalles del gran día</p><h1 className="section-title">Preguntas frecuentes</h1></div>
         <div className="grid lg:grid-cols-2 gap-8 pt-10">
-          <h1 className="uppercase lg:text-4xl text-3xl font-light tracking-widest">
+          <h2 className="text-4xl font-light tracking-tight">
             vestimenta
-          </h1>
+          </h2>
           <ul className="list-disc list-inside flex flex-col gap-10">
             <li className="font-light text-lg tracking-wider">
               ¿HAY CÓDIGO DE VESTIMENTA? <br />
               <span className="text-sm tracking-wide">
-                Sí — el código de vestimenta es formal. Les invitamos a optar
-                por atuendos elegantes: vestidos largos sofisticados para
-                mujeres, y traje o esmoquin para hombres. Piensen en un look
-                clásico, pulido y acorde a una celebración especial de noche.
+                Sí. Nuestro código de vestimenta es Formal · Black Tie. Las mujeres
+                pueden optar por vestidos largos de estilo formal y elegante,
+                mientras que los caballeros deberán vestir esmoquin negro (Black Tie)
               </span>
             </li>
             <li className="font-light text-lg tracking-wider">
-              ¿HAY COLORES ESPECÍFICOS PARA EL VESTUARIO? <br />
+              ¿HAY COLORES RESERVADOS PARA EL VESTUARIO? <br />
               <span className="text-sm tracking-wide">
-                No hay una paleta obligatoria. Sin embargo, les pedimos
-                amablemente evitar el color blanco, ya que está reservado para
-                la novia. Fuera de eso, siéntanse libres de elegir colores que
-                los hagan sentir cómodos y seguros.
+                Les agradecemos evitar el color blanco, ya que está reservado
+                exclusivamente para la novia. Fuera de esta consideración,
+                siéntanse libres de elegir colores y estilos con los que se
+                sientan cómodos y elegantes para acompañarnos en esta celebración
+                tan especial.
               </span>
             </li>
           </ul>
         </div>
         <hr className="border-dark opacity-15 w-full mt-30 lg:mt-10" />
         <div className="grid lg:grid-cols-2 gap-8 mt-20 lg:mt-10">
-          <h1 className="uppercase lg:text-4xl text-3xl font-light tracking-widest">
+          <h2 className="text-4xl font-light tracking-tight">
             Niños
-          </h1>
+          </h2>
           <ul className="list-disc list-inside flex flex-col gap-10">
             <li className="font-light text-lg tracking-wider">
-              ¿LOS NIÑOS SON BIENVENIDOS A LA BODA? <br />
+              ¿LA CELEBRACIÓN SERÁ EXCLUSIVA PARA ADULTOS? <br />
               <span className="text-sm tracking-wide">
-                ¡Por supuesto! Nos encantará contar con ellos en este día tan
-                especial. Hemos preparado un espacio pensado para los más
-                pequeños, con actividades y entretenimiento para que también
-                disfruten la celebración.
-              </span>
-            </li>
-            <li className="font-light text-lg tracking-wider">
-              ¿EXISTE UN LÍMITE DE EDAD PARA ASISTIR? <br />
-              <span className="text-sm tracking-wide">
-                No hay límite de edad. Queremos que toda la familia sea parte de
-                este momento, desde los más pequeños hasta los mayores.
+                Con mucho cariño, hemos decidido que nuestra boda sea una
+                celebración exclusivamente para adultos. Esperamos que esta
+                ocasión les permita relajarse, disfrutar de la velada y compartir
+                con nosotros una noche inolvidable. Agradecemos profundamente su
+                comprensión y su compañía en este día tan especial.
               </span>
             </li>
           </ul>
         </div>
         <hr className="border-dark opacity-15 w-full mt-30 lg:mt-10" />
         <div className="grid lg:grid-cols-2 gap-8 mt-20 lg:mt-10">
-          <h1 className="uppercase lg:text-4xl text-3xl font-light tracking-widest">
+          <h2 className="text-4xl font-light tracking-tight">
            comida
-          </h1>
+          </h2>
           <ul className="list-disc list-inside flex flex-col gap-10">
             <li className="font-light text-lg tracking-wider">
               ¿CONTEMPLAN RESTRICCIONES ALIMENTARIAS? <br />
@@ -86,8 +82,8 @@ export default function FaqsPage() {
             </li>
           </ul>
         </div>
-      </div>
-      <div className="bg-dark h-12"> </div>
+      </main>
+      <Footer />
     </div>
   );
 }

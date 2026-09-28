@@ -1,157 +1,38 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
-type NavItem = {
-  label: string;
-  href?: string;
-  trailing?: string;
-};
+const items = [
+  { label: "Nuestra historia", href: "/nuestra-historia" },
+  { label: "Viaje y alojamiento", href: "/viaje-alojamiento" },
+  { label: "Preguntas frecuentes", href: "/faqs" },
+];
 
-type NavGroup = {
-  label: string;
-  href?: string;
-  trailing?: string;
-  items: NavItem[];
-};
-
-function BurgerIcon() {
-  return (
-    <span className="inline-flex h-10 w-10 items-center justify-center">
-      <span className="flex flex-col gap-2">
-        <span className="h-[2px] w-8 bg-dark opacity-80" />
-        <span className="h-[2px] w-8 bg-dark opacity-80" />
-      </span>
-    </span>
-  );
-}
-
-function CloseIcon() {
-  return (
-    <span className="inline-flex h-10 w-10 items-center justify-center text-2xl leading-none">
-      ×
-    </span>
-  );
-}
-
-function NavBar() {
+export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [infoOpen, setInfoOpen] = useState(false);
-
-  const closeMenu = () => {
-    setIsOpen(false);
-    setInfoOpen(false);
-  };
-
-  const items: NavItem[] = useMemo(
-    () => [
-      { label: "Nuestra Historia", href: "/nuestra-historia" },
-      { label: "Viaje y Alojamiento", href: "/viaje-alojamiento" },
-      { label: "Preguntas Frecuentes", href: "/faqs" },
-    ],
-    []
-  );
-
+  const pathname = usePathname();
+  const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     if (!isOpen) return;
-
-    const prevOverflow = document.body.style.overflow;
+    const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeMenu();
-    };
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      document.body.style.overflow = prevOverflow;
-      window.removeEventListener("keydown", onKeyDown);
-    };
+    dialog.current?.showModal();
+    return () => { document.body.style.overflow = previous; };
   }, [isOpen]);
-
   return (
     <>
-      <header className="max-w-screen absolute top-0 left-0 right-0 z-50"> 
-       <Link href="/">  
-          <Image src="/monogram.svg" alt="Danna & Fabian" width={80} height={80} className="absolute top-2 left-1/2 -translate-x-1/2"/>
-        </Link>
-        <div className="flex items-center justify-between px-6 py-6 md:px-12 md:py-10">
-          {/* Desktop */}
-          <nav className="hidden lg:flex items-center gap-4 text-sm tracking-wider group/nav">
-            {items.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="uppercase opacity-90 group-hover/nav:opacity-50 hover:opacity-100 focus-visible:opacity-100 transition-opacity"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="hidden lg:block">
-            <button>Confirmar Asistencia</button>
-          </div>
-
-          {/* Mobile */}
-          <button
-            type="button"
-            aria-label="Open menu"
-            className="lg:hidden! bg-transparent! text-dark! absolute right-3 top-3"
-            onClick={() => {
-              setInfoOpen(false);
-              setIsOpen(true);
-            }}
-          >
-            <BurgerIcon />
-          </button>
-        </div>
+      <header className="nav-shell">
+        <Link href="/" className="display nav-brand" aria-label="Danna y Fabián, inicio">D<span className="text-lightaccent italic">&amp;</span>F</Link>
+        <nav aria-label="Navegación principal" className="nav-links">{items.map(item => <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>)}</nav>
+        <Link href="/#rsvp" className="button nav-rsvp">Confirmar asistencia <span aria-hidden="true">↗</span></Link>
+        <button className="mobile-toggle" aria-expanded={isOpen} aria-controls="mobile-menu" onClick={() => setIsOpen(true)}>Menú <span aria-hidden="true">☰</span></button>
       </header>
-
-      {/* Mobile overlay */}
-      {isOpen && (
-        <div className="fixed inset-0 z-60 bg-background text-dark">
-          <div className="flex h-full flex-col">
-            <div className="flex items-center px-6 py-6">
-              <button
-                type="button"
-                aria-label="Close menu"
-                className="bg-light! text-dark! fixed right-3 top-3"
-                onClick={closeMenu}
-              >
-                <CloseIcon />
-              </button>
-            </div>
-
-            <div className="flex flex-1 items-center justify-center px-10">
-              <ul className="w-full max-w-sm text-center">
-                {items.map((item) => (
-                  <li key={item.label} className="py-8">
-                    <a
-                      href={item.href}
-                      className="block uppercase tracking-[0.25em] hover:opacity-90"
-                      onClick={closeMenu}
-                    >
-                      <span>{item.label}</span>
-                    </a>
-                  </li>
-                ))}
-
-              </ul>
-            </div>
-
-            <div className="px-10 pb-12 self-center">
-              <button onClick={closeMenu}>
-                CONFIRMAR ASISTENCIA
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {isOpen && <dialog ref={dialog} id="mobile-menu" aria-label="Menú de navegación" onCancel={() => setIsOpen(false)} className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none bg-background text-dark p-7 backdrop:bg-dark/30">
+        <div className="flex justify-between items-center"><span className="display text-3xl">D &amp; F</span><button autoFocus onClick={() => setIsOpen(false)} aria-label="Cerrar menú">Cerrar ×</button></div>
+        <nav className="flex h-4/5 flex-col justify-center gap-10" aria-label="Navegación móvil">{items.map(item => <Link className="display text-4xl" key={item.href} href={item.href} onClick={() => setIsOpen(false)}>{item.label}</Link>)}<Link className="text-link self-start" href="/#rsvp" onClick={() => setIsOpen(false)}>Confirmar asistencia ↗</Link></nav>
+      </dialog>}
     </>
   );
 }
-
-export default NavBar;

@@ -1,13 +1,9 @@
-const Quote = () => {
+export default function Quote() {
   return (
-    <div className="flex flex-col items-center justify-center gap-12 text-center text-xl tracking-widest uppercase md:py-72 py-24">
-      <p className="md:max-w-2xl max-w-xs">
-        “Si te quiero es porque sos mi amor, mi cómplice y todo, y en la calle
-        codo a codo somos mucho más que dos.”
-      </p>
-      <h3 className="font-extralight">- Mario Benedetti</h3>
-    </div>
+    <section className="quote-section">
+      <span className="display text-4xl text-lightaccent" aria-hidden="true">✳</span>
+      <blockquote className="display">“Si te quiero es porque sos mi amor, mi cómplice y todo, y en la calle codo a codo somos mucho más que dos.”</blockquote>
+      <p className="eyebrow">Mario Benedetti</p>
+    </section>
   );
-};
-
-export default Quote;
+}

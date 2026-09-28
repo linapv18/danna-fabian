@@ -10,52 +10,67 @@ const RSVPBanner = () => {
     const bg = bgRef.current;
     if (!section || !bg) return;
 
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     let raf = 0;
-    const speed = 0.35;
-    const baseOffset = -200;
-    const minOffset = -500;
-    const maxOffset = 150;
-    const scale = 1.18;
 
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const rect = section.getBoundingClientRect();
-        const rawOffset = rect.top * speed + baseOffset;
-        const offset = Math.min(maxOffset, Math.max(minOffset, rawOffset));
-        bg.style.transform = `translate3d(0, ${offset}px, 0) scale(${scale})`;
-      });
+    const updatePosition = () => {
+      raf = 0;
+      if (motionQuery.matches) {
+        bg.style.transform = "translate3d(0, 0, 0)";
+        return;
+      }
+
+      const rect = section.getBoundingClientRect();
+      // Only move within the extra image area, leaving a small rounding buffer.
+      const travel = Math.max(0, (bg.offsetHeight - rect.height) / 2 - 2);
+      const distanceFromCenter = rect.top + rect.height / 2 - window.innerHeight / 2;
+      const offset = Math.max(-travel, Math.min(travel, distanceFromCenter * 0.35));
+      bg.style.transform = `translate3d(0, ${offset}px, 0)`;
     };
 
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+    const scheduleUpdate = () => {
+      if (!raf) raf = requestAnimationFrame(updatePosition);
+    };
+
+    const resizeObserver = new ResizeObserver(scheduleUpdate);
+    resizeObserver.observe(section);
+    resizeObserver.observe(bg);
+    scheduleUpdate();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    motionQuery.addEventListener("change", scheduleUpdate);
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
+      resizeObserver.disconnect();
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      motionQuery.removeEventListener("change", scheduleUpdate);
     };
   }, []);
 
   return (
     <section
+      id="rsvp"
       ref={sectionRef}
-      className="relative overflow-hidden h-[520px] md:h-[900px]"
+      className="relative isolate overflow-hidden bg-dark min-h-[clamp(520px,85svh,900px)] flex items-center justify-center"
     >
       <div
         ref={bgRef}
+        aria-hidden="true"
         className="absolute -top-[20%] -bottom-[20%] inset-x-0 bg-cover bg-position-[50%_20%] will-change-transform"
         style={{ backgroundImage: "url('/parallax-rsvp.jpg')" }}
       />
-      <div className="absolute inset-0 bg-black/35" />
+      <div aria-hidden="true" className="absolute inset-0 bg-black/35" />
 
-      <div className="relative z-10 flex flex-col gap-12 h-full items-center justify-center text-center text-white">
-        <div className="px-6">
-          <h2 className="text-5xl tracking-[0.25em]">RSVP</h2>
+      <div className="relative z-10 flex w-full flex-col gap-8 md:gap-12 px-6 py-20 md:py-28 items-center justify-center text-center text-white">
+        <div className="w-full">
+          <h2 className="text-7xl md:text-9xl tracking-tight">RSVP</h2>
           <p className="mx-auto mt-4 max-w-xl opacity-90">
             Por favor, confírmanos si podrás acompañarnos en la celebración de
             nuestro gran día antes del 1 de enero de 2026.
           </p>
         </div>
-        <button className="bg-light! text-dark!">CONFIRMAR</button>
+        <a href="https://wa.link/eae769" target="_blank" rel="noopener noreferrer" className="button max-w-full bg-light! text-dark!">Confirmar por WhatsApp ↗</a>
       </div>
     </section>
   );

@@ -47,14 +47,14 @@ export default function StoryCollage() {
         <div className="pointer-events-none sticky top-1/2 z-20 flex justify-center">
           <div className="w-full max-w-5xl px-6 text-center">
             <p className="md:text-xl text-base tracking-widest opacity-70">DANNA & FABIAN</p>
-            <h2 className="mt-6 md:text-8xl text-4xl font-light tracking-wide">NUESTRA HISTORIA</h2>
+            <h2 className="mt-6 text-5xl md:text-8xl font-light tracking-tight">Nuestra historia</h2>
           </div>
         </div>
         <div className="absolute inset-0">
           {PHOTOS.map((p) => (
             <div
               key={p.src}
-              className={`absolute ${p.className} shadow-[0_20px_60px_rgba(0,0,0,0.18)]`}
+              className={`absolute ${p.className} shadow-[0_20px_60px_rgba(0,0,0,0.12)] border-8 border-white`}
             >
               <div className="relative overflow-hidden bg-black/5 aspe">
                 <div className={`relative ${p.aspect}`}>

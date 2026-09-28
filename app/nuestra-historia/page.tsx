@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
 import NavBar from "@/components/NavBar";
@@ -13,25 +14,22 @@ export default function StoryPage() {
       <NavBar />
       <StickyStory />
       <div className="flex flex-col items-center justify-center gap-12 text-center mb-20 md:mb-40">
-        <p className="text-center text-base tracking-wide leading-relaxed md:max-w-3xl max-w-xs font-extralight mx-auto mt-8 md:mt-12 md:text-xl">
-          We&apos;re Marc and Julia, a couple whose journey together has been as
-          enchanting as the city of Paris itself. From our first meeting in a
-          quaint Parisian café to our romantic strolls along the Seine, our bond
-          has grown stronger with each passing day. We are thrilled to share
-          this special moment in our lives with you in the city that has
-          witnessed our love blossom. Join us as we embark on this new chapter,
-          celebrating our union in the heart of Paris, where every corner holds
-          a memory, and every moment is filled with love.
-        </p>
+        <div className="text-left text-base leading-8 max-w-2xl px-7 mx-auto mt-8 md:mt-12 space-y-6">
+          <p>De todas las historias que pudo escribir el destino, nuestra favorita es la que nos encontró el uno al otro.</p>
+          <p>Nuestra historia comenzó de una manera inesperada en Santa Marta. Fue allí donde compartimos nuestras primeras conversaciones, entre risas y momentos que, sin saberlo, marcarían el inicio de algo muy especial.</p>
+          <p>Lo que comenzó con una conversación se convirtió en una conexión única que creció día a día, transformándose en un amor sincero, lleno de confianza, complicidad y sueños compartidos. Juntos hemos vivido aventuras, creado recuerdos inolvidables y descubierto la felicidad de caminar de la mano hacia un mismo destino.</p>
+          <p>Hoy, con el corazón lleno de amor y gratitud, damos el paso más importante de nuestras vidas. Miramos hacia el futuro con ilusión y emoción, agradecidos por todo lo vivido y por todo lo que está por venir.</p>
+          <p>Gracias por acompañarnos en este día tan especial y por ser parte del comienzo de este nuevo capítulo: nuestra vida juntos.</p>
+        </div>
         <div>
           <p className="text-center text-xl tracking-wide font-light md:max-w-3xl max-w-xs mx-auto md:text-2xl mb-4 uppercase">
             Confirma tu asistencia para acompañarnos y hacer parte de esta
             inolvidable celebración!
           </p>
-          <button>CONFIRMAR ASISTENCIA</button>
+          <a href="https://wa.link/eae769" className="button" target="_blank" rel="noopener noreferrer">Confirmar por WhatsApp ↗</a>
         </div>
       </div>
-      <div className="bg-dark h-12"> </div>
+      <Footer />
     </div>
   );
 }
