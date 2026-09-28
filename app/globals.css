@@ -166,3 +166,19 @@ button:hover, .button:hover { transform: translateY(-2px); opacity: 1; }
 @keyframes wedding-photo-settle { from { scale: 1.045; opacity: .5; } to { scale: 1; opacity: 1; } }
 @keyframes wedding-card-arrive { from { opacity: 0; translate: 0 24px; } to { opacity: 1; translate: 0 0; } }
 @keyframes wedding-line-grow { from { scale: 0 1; } to { scale: 1 1; } }
+
+/* Compact planner table; long notes wrap instead of widening the report. */
+.guest-table table { table-layout: fixed; min-width: 720px; font-size: 12px; }
+.guest-table th, .guest-table td { padding: 10px 8px; min-width: 0; vertical-align: top; overflow-wrap: anywhere; }
+.guest-table thead th { white-space: normal; font-size: 11px; }
+.guest-table th:nth-child(1) { width: 20%; }
+.guest-table th:nth-child(2) { width: 12%; }
+.guest-table th:nth-child(3) { width: 7%; }
+.guest-table th:nth-child(4), .guest-table th:nth-child(5) { width: 17%; }
+.guest-table th:nth-child(6) { width: 27%; }
+.guest-table td:nth-child(2) { white-space: normal; }
+.guest-actions { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 5px; }
+.guest-table button { padding: 7px 9px; font-size: 9px; letter-spacing: .02em; gap: 4px; border-radius: 7px; white-space: nowrap; }
+.organizer-row-actions { display: contents; }
+.organizer-row-actions > div { display: contents; }
+.organizer-action-form { flex-basis: 100%; min-width: 0; margin-top: 6px; font-size: 12px; }

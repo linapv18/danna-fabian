@@ -5,7 +5,7 @@ export default function Schedule() {
     <section id="celebracion" className="schedule">
       <div className="section-shell">
         <div className="schedule-heading">
-          <div><p className="eyebrow mb-6 text-[#c3cbaa]">02 / El gran día</p><h2 className="section-title">La ceremonia</h2></div>
+          <div><p className="eyebrow mb-6 text-[#c3cbaa]">El gran día</p><h2 className="section-title">La ceremonia</h2></div>
           <p className="eyebrow">Sábado, 12 de diciembre de 2026</p>
         </div>
         <div className="ceremony-details">

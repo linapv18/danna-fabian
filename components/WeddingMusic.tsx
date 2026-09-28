@@ -1,17 +1,25 @@
 "use client";
 
-import { createContext, useContext, useRef, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import ArrowIcon from "@/components/ArrowIcon";
 
 const MusicContext = createContext<() => void>(() => {});
 
 export default function WeddingMusic({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const isOrganizer = pathname === "/organizacion" || pathname.startsWith("/organizacion/");
   const audio = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [error, setError] = useState(false);
 
+  useEffect(() => {
+    if (isOrganizer) audio.current?.pause();
+  }, [isOrganizer]);
+
   function play() {
+    if (isOrganizer) return;
     const player = audio.current;
     if (!player) return;
     setError(false);
@@ -23,7 +31,7 @@ export default function WeddingMusic({ children }: { children: ReactNode }) {
     <MusicContext.Provider value={play}>
       {children}
       <audio ref={audio} src="/music/cumbiana.mp3" loop preload="none" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => { setPlaying(false); setError(true); }} />
-      <div className="wedding-music">
+      {!isOrganizer && <div className="wedding-music">
         {error && <p role="status" className="music-notice">No se pudo reproducir. Toca para reintentar.</p>}
         <button type="button" onClick={() => playing ? audio.current?.pause() : play()} aria-label={playing ? "Pausar música" : "Reproducir música"} aria-pressed={playing} title="Carlos Vives · Cumbiana">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
@@ -31,7 +39,7 @@ export default function WeddingMusic({ children }: { children: ReactNode }) {
           </svg>
           <span>{playing ? "Pausar" : "Música"}</span>
         </button>
-      </div>
+      </div>}
     </MusicContext.Provider>
   );
 }
