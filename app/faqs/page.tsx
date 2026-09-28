@@ -15,7 +15,7 @@ export default function FaqsPage() {
         <div className="faq-heading"><p className="eyebrow mb-5">Los detalles del gran día</p><h1 className="section-title">Preguntas frecuentes</h1></div>
         <div className="grid lg:grid-cols-2 gap-8 pt-10">
           <h2 className="text-4xl font-light tracking-tight">
-            vestimenta
+            Vestimenta
           </h2>
           <ul className="list-disc list-inside flex flex-col gap-10">
             <li className="font-light text-lg tracking-wider">
@@ -63,7 +63,7 @@ export default function FaqsPage() {
         <hr className="border-dark opacity-15 w-full mt-30 lg:mt-10" />
         <div className="grid lg:grid-cols-2 gap-8 mt-20 lg:mt-10">
           <h2 className="text-4xl font-light tracking-tight">
-           comida
+           Comida
           </h2>
           <ul className="list-disc list-inside flex flex-col gap-10">
             <li className="font-light text-lg tracking-wider">
