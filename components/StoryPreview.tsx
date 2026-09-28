@@ -5,7 +5,7 @@ import Link from "@/components/InvitationLink";
 export default function StoryPreview() {
   return (
     <section className="section-shell story-intro">
-      <div className="story-image"><Image src="/hero-small.JPG" alt="Un recuerdo de Fabián y Danna " fill sizes="(max-width: 600px) 240px, 350px" /></div>
+      <div className="story-image"><Image src="/hero-small.jpg" alt="Un recuerdo de Fabián y Danna " fill sizes="(max-width: 600px) 240px, 350px" /></div>
       <div className="story-copy">
         <span className="eyebrow">01 / Nuestra historia</span>
         <h2 className="section-title mt-6">Una historia que se escribe con el <em>tiempo.</em></h2>
