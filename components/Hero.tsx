@@ -1,13 +1,11 @@
-import type { Invitation } from "@/lib/invitations";
 import ArrowIcon from "@/components/ArrowIcon";
 import Image from "next/image";
 
-export default function Hero({ invitation }: { invitation?: Invitation | null }) {
+export default function Hero() {
   return (
     <section className="hero">
       <div className="hero-copy">
         <p className="eyebrow">Nos vamos a casar</p>
-        {invitation && <div className="mt-6 max-w-full"><p className="eyebrow mb-2">Esta invitación es para</p><p className="display text-2xl md:text-3xl leading-tight break-words">{invitation.name}</p><p className="text-sm mt-3">Hemos reservado <strong>{invitation.seats} {invitation.seats === 1 ? "cupo" : "cupos"}</strong> para {invitation.seats === 1 ? "ti" : "ustedes"}.</p></div>}
         <h1 className="hero-title">Danna<br /><em>&amp;</em> Fabián</h1>
         <div className="flex items-center gap-5 mb-9">
           <span className="display text-5xl">12</span>

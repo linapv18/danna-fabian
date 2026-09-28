@@ -9,6 +9,7 @@ function PersonalizedLink({ href, ...props }: Props) {
   if (token && /^[a-f0-9]{64}$/.test(token) && href.startsWith("/") && !href.startsWith("//")) {
     const url = new URL(href, "https://invitation.local");
     url.searchParams.set("token", token);
+    if (url.pathname === "/") url.searchParams.set("abierta", "1");
     destination = url.pathname + url.search + url.hash;
   }
   return <NextLink {...props} href={destination} />;
