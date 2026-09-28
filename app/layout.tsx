@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-// @ts-expect-error Next.js handles global CSS imports; TypeScript may not resolve this side-effect import.
 import "./globals.css";
 
 
