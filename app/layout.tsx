@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import WeddingMusic from "@/components/WeddingMusic";
 
 
 const montserrat = Montserrat({
@@ -23,7 +24,7 @@ export default function RootLayout({
       <body
         className={montserrat.variable}
       >
-        {children}
+        <WeddingMusic>{children}</WeddingMusic>
       </body>
     </html>
   );

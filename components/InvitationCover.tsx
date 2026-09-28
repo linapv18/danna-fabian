@@ -1,4 +1,4 @@
-import ArrowIcon from "@/components/ArrowIcon";
+import { OpenInvitation } from "@/components/WeddingMusic";
 import type { Invitation } from "@/lib/invitations";
 
 export default function InvitationCover({ invitation, token }: { invitation: Invitation; token: string }) {
@@ -14,9 +14,7 @@ export default function InvitationCover({ invitation, token }: { invitation: Inv
         <h2 className="invitation-guest">{invitation.name}</h2>
         <p className="invitation-message">Nuestro día será aún más especial<br />{invitation.seats === 1 ? "contigo a nuestro lado." : "con ustedes a nuestro lado."}</p>
         <p className="invitation-seats">Hemos reservado <strong>{invitation.seats} {invitation.seats === 1 ? "cupo" : "cupos"}</strong> para {invitation.seats === 1 ? "ti" : "ustedes"}.</p>
-        <a className="invitation-open" href={`/?token=${encodeURIComponent(token)}&abierta=1`}>
-          Abrir la invitación <ArrowIcon />
-        </a>
+        <OpenInvitation href={`/?token=${encodeURIComponent(token)}&abierta=1`} />
         <p className="invitation-location">Barranquilla, Colombia</p>
       </article>
     </main>
