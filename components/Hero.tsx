@@ -1,3 +1,4 @@
+import ArrowIcon from "@/components/ArrowIcon";
 import Image from "next/image";
 
 export default function Hero() {
@@ -11,7 +12,7 @@ export default function Hero() {
           <span className="h-10 w-px bg-dark/25" />
           <p className="eyebrow leading-6">Diciembre · 2026<br />Barranquilla, Colombia</p>
         </div>
-        <a href="#celebracion" className="text-link">Nuestro gran día <span aria-hidden="true">↘</span></a>
+        <a href="#celebracion" className="text-link">Nuestro gran día <ArrowIcon direction="down-right" /></a>
       </div>
       <div className="hero-photo">
         <Image src="/hero-big.jpg" alt="Danna y Fabián juntos" fill priority sizes="(max-width: 900px) 100vw, 52vw" />

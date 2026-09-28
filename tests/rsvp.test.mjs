@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import ts from 'typescript';
+const source = ts.transpileModule(readFileSync(new URL('../lib/rsvp.ts', import.meta.url), 'utf8'), { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2020 } }).outputText;
+const { parseRsvp } = await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
+const valid = { submissionId: '07d09119-0292-48f2-94fa-450f691527a8', name: ' Invitado prueba ', email: ' TEST@example.com ', attending: true, companions: [' Acompañante prueba '], dietary: '', message: '' };
+test('normaliza nombre, correo y acompañantes', () => { const data = parseRsvp(valid); assert.equal(data.name, 'Invitado prueba'); assert.equal(data.email, 'test@example.com'); assert.deepEqual(data.companions, ['Acompañante prueba']); });
+test('no asistencia elimina acompañantes y restricciones', () => { const data = parseRsvp({...valid, attending:false, dietary:'No aplica'}); assert.deepEqual(data.companions, []); assert.equal(data.dietary, ''); });
+test('rechaza datos incompletos y manipulados', () => { for (const patch of [{email:'invalid'}, {attending:'yes'}, {name:' '}, {submissionId:'invalid'}, {companions:['']}, {companions:Array(10).fill('Persona')}, {message:'a'.repeat(2001)}]) assert.throws(() => parseRsvp({...valid,...patch})); assert.throws(() => parseRsvp(null)); });

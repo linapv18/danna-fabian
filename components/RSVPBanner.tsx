@@ -1,4 +1,8 @@
 "use client";
+
+import Link from "next/link";
+import ArrowIcon from "@/components/ArrowIcon";
+
 import { useEffect, useRef } from "react";
 
 const RSVPBanner = () => {
@@ -70,7 +74,7 @@ const RSVPBanner = () => {
             nuestro gran día antes del 1 de enero de 2026.
           </p>
         </div>
-        <a href="https://wa.link/eae769" target="_blank" rel="noopener noreferrer" className="button max-w-full bg-light! text-dark!">Confirmar por WhatsApp ↗</a>
+        <Link href="/rsvp" className="button max-w-full bg-light! text-dark!">Confirmar asistencia <ArrowIcon /></Link>
       </div>
     </section>
   );

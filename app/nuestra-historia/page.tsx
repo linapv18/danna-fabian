@@ -1,3 +1,5 @@
+import Link from "next/link";
+import ArrowIcon from "@/components/ArrowIcon";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
@@ -26,7 +28,7 @@ export default function StoryPage() {
             Confirma tu asistencia para acompañarnos y hacer parte de esta
             inolvidable celebración!
           </p>
-          <a href="https://wa.link/eae769" className="button" target="_blank" rel="noopener noreferrer">Confirmar por WhatsApp ↗</a>
+          <Link href="/rsvp" className="button">Confirmar asistencia <ArrowIcon /></Link>
         </div>
       </div>
       <Footer />

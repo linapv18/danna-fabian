@@ -1,3 +1,4 @@
+import ArrowIcon from "@/components/ArrowIcon";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,7 +10,7 @@ export default function StoryPreview() {
         <span className="eyebrow">01 / Nuestra historia</span>
         <h2 className="section-title mt-6">Una historia que se escribe con el <em>tiempo.</em></h2>
         <p>Todo comienza con pequeños momentos que, sin darse cuenta, se vuelven importantes. Esta es una historia hecha de recuerdos, caminos compartidos y capítulos que siguen escribiéndose.</p>
-        <Link href="/nuestra-historia" className="text-link">Lee nuestra historia <span aria-hidden="true">↗</span></Link>
+        <Link href="/nuestra-historia" className="text-link">Lee nuestra historia <ArrowIcon /></Link>
       </div>
     </section>
   );
